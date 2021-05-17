@@ -9,9 +9,13 @@ const prisma = new PrismaClient();
 
 export default function Home({ data }) {
   const [formData, setFormData] = useState({});
+  const [tests, setTests] = useState(data)
 
   async function saveTest(e) {
     e.preventDefault();
+    
+    setTests([...tests, formData])
+
     const response = await fetch("/api/tests", {
       method: "POST",
       body: JSON.stringify(formData),
@@ -29,7 +33,7 @@ export default function Home({ data }) {
 
       <main className={styles.main}>
         <ul className={styles.testlist}>
-          {data.map((item) => (
+          {tests.map((item) => (
             <li key="item.id">
               <span>
                 <strong>{item.title}</strong>
