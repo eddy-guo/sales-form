@@ -17,7 +17,13 @@ export default function Home({ data }) {
       <main className={styles.main}>
         <ul className={styles.testlist}>
           {data.map((item) => (
-            <li key="item.id">{item.Title}</li>
+            <li key="item.id">
+              <span>
+                <strong>{item.Title}</strong>
+              </span>
+              <span>{item.Year}</span>
+              <span>{item.Description}</span>
+            </li>
             // CASE SENSITIVE RELATIVE TO TABLE COLUMN NAMES!!!!
           ))}
         </ul>
