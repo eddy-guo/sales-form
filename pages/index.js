@@ -2,7 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 
-export default function Home() {
+export default function Home({ data }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -11,7 +11,32 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}></main>
+      <main className={styles.main}>
+        <ul className={styles.testlist}>
+          {data.map((item) => (
+            <li key="item.id">{item.title}</li>
+          ))}
+        </ul>
+      </main>
     </div>
   );
+}
+
+export async function getServerSideProps() {
+  const data = [
+    {
+      id: 1,
+      title: "title",
+    },
+    {
+      id: 2,
+      title: "another title",
+    },
+  ];
+
+  return {
+    props: {
+      data,
+    },
+  };
 }
