@@ -12,8 +12,8 @@ generator client {
 
 model Test {
   id Int @id @default(autoincrement())
-  Title String
-  Year Int
-  Description String
-  Slug String
+  title String
+  year Int
+  description String
+  slug String
 }

@@ -8,12 +8,16 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 export default function Home({ data }) {
-
   const [formData, setFormData] = useState({});
 
-  const saveTest = e => {
-    e.preventDefault()
-    console.log(formData)
+  async function saveTest(e) {
+    e.preventDefault();
+    const response = await fetch("/api/tests", {
+      method: "POST",
+      body: JSON.stringify(formData),
+    });
+
+    return await response.json();
   }
 
   return (
@@ -28,14 +32,14 @@ export default function Home({ data }) {
           {data.map((item) => (
             <li key="item.id">
               <span>
-                <strong>{item.Title}</strong>
+                <strong>{item.title}</strong>
               </span>
-              <span>{item.Year}</span>
-              <span>{item.Description}</span>
+              <span>{item.year}</span>
+              <span>{item.description}</span>
             </li>
-            // CASE SENSITIVE RELATIVE TO TABLE COLUMN NAMES!!!!
           ))}
         </ul>
+
         <form className={styles.testform} onSubmit={saveTest}>
           <input
             type="text"
@@ -69,7 +73,7 @@ export default function Home({ data }) {
             name="slug"
             onChange={(e) => setFormData({ ...formData, slug: e.target.value })}
           />
-          <button type="submit">Add Test</button>
+          <button type="submit">Add movie</button>
         </form>
       </main>
     </div>
