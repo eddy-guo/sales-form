@@ -17,3 +17,22 @@ model Test {
   description String
   slug String
 }
+
+model Fax {
+  id Int @id @default(autoincrement())
+  Pain_Points String
+  Fax_volume String
+  Fax_numbers String
+  Current_fax_setup String
+  Service_Level_Agreements String
+  Number_of_users Int // choice; 10, 25, 50, >100
+  MFD_Vendor String
+  Integrations String
+  Authentication String // choice; Basic, SAML
+  Retention String // choice; Temp, Long-term
+  ECM_Cloud_Storage String
+  Telco_Provider String
+  Use_Coversheet String // boolean
+  Any_automation_desired String // boolean
+  Other_Important_Detail String
+}

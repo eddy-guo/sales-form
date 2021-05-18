@@ -27,9 +27,43 @@ export default function Home({ data }) {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Test List</title>
+        <title>Sales Form</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      <h1 className={styles.title}>Process Fusion Sales Form (v1)</h1>
+
+      <form className={styles.testform} onSubmit={saveTest}>
+        <input
+          type="text"
+          placeholder="Title"
+          name="title"
+          onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+        />
+        <input
+          type="text"
+          placeholder="Year"
+          name="year"
+          onChange={(e) => setFormData({ ...formData, year: +e.target.value })}
+        />
+        <textarea
+          name="description"
+          id=""
+          cols="30"
+          rows="10"
+          placeholder="Description"
+          onChange={(e) =>
+            setFormData({ ...formData, description: e.target.value })
+          }
+        />
+        <input
+          type="text"
+          placeholder="Slug"
+          name="slug"
+          onChange={(e) => setFormData({ ...formData, slug: e.target.value })}
+        />
+        <button type="submit">Add test</button>
+      </form>
 
       <main className={styles.main}>
         <ul className={styles.testlist}>
@@ -46,42 +80,6 @@ export default function Home({ data }) {
             </li>
           ))}
         </ul>
-
-        <form className={styles.testform} onSubmit={saveTest}>
-          <input
-            type="text"
-            placeholder="Title"
-            name="title"
-            onChange={(e) =>
-              setFormData({ ...formData, title: e.target.value })
-            }
-          />
-          <input
-            type="text"
-            placeholder="Year"
-            name="year"
-            onChange={(e) =>
-              setFormData({ ...formData, year: +e.target.value })
-            }
-          />
-          <textarea
-            name="description"
-            id=""
-            cols="30"
-            rows="10"
-            placeholder="Description"
-            onChange={(e) =>
-              setFormData({ ...formData, description: e.target.value })
-            }
-          />
-          <input
-            type="text"
-            placeholder="Slug"
-            name="slug"
-            onChange={(e) => setFormData({ ...formData, slug: e.target.value })}
-          />
-          <button type="submit">Add test</button>
-        </form>
       </main>
     </div>
   );
