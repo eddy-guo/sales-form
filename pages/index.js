@@ -1,6 +1,7 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { useState } from "react";
+import Link from 'next/link'
 
 import { PrismaClient } from "@prisma/client";
 
@@ -39,6 +40,9 @@ export default function Home({ data }) {
               </span>
               <span>{item.year}</span>
               <span>{item.description}</span>
+              <Link href={`/tests/${item.slug}`}>
+              <a>More about this Test</a>
+              </Link>
             </li>
           ))}
         </ul>
