@@ -1,7 +1,7 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { useState } from "react";
-import Link from 'next/link'
+import Link from "next/link";
 
 import { PrismaClient } from "@prisma/client";
 
@@ -9,12 +9,12 @@ const prisma = new PrismaClient();
 
 export default function Home({ data }) {
   const [formData, setFormData] = useState({});
-  const [tests, setTests] = useState(data)
+  const [tests, setTests] = useState(data);
 
   async function saveTest(e) {
     e.preventDefault();
-    
-    setTests([...tests, formData])
+
+    setTests([...tests, formData]);
 
     const response = await fetch("/api/tests", {
       method: "POST",
@@ -41,7 +41,7 @@ export default function Home({ data }) {
               <span>{item.year}</span>
               <span>{item.description}</span>
               <Link href={`/tests/${item.slug}`}>
-              <a>More about this Test</a>
+                <a>More about this Test</a>
               </Link>
             </li>
           ))}
