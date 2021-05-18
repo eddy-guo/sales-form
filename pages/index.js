@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import { useState } from "react";
 
@@ -77,7 +76,7 @@ export default function Home({ data }) {
             name="slug"
             onChange={(e) => setFormData({ ...formData, slug: e.target.value })}
           />
-          <button type="submit">Add movie</button>
+          <button type="submit">Add test</button>
         </form>
       </main>
     </div>
