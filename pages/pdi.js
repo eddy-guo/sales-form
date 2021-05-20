@@ -7,7 +7,7 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-export default function otherdocuments({ data }) {
+export default function pdi({ data }) {
   const [formData, setFormData] = useState({});
   const [tests, setTests] = useState(data);
 
@@ -16,7 +16,7 @@ export default function otherdocuments({ data }) {
 
     setTests([...tests, formData]);
 
-    const response = await fetch("/api/otherdocuments", {
+    const response = await fetch("/api/pdi", {
       method: "POST",
       body: JSON.stringify(formData),
     });
@@ -31,26 +31,23 @@ export default function otherdocuments({ data }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1 className={styles.title}>Other Documents Form</h1>
+      <h1 className={styles.title}>Accounts Payable Form</h1>
 
       <form className={styles.testform} onSubmit={saveTest}>
         <input
           type="text"
-          placeholder="type_of_documents_to_process"
-          name="type_of_documents_to_process"
+          placeholder="pain_points"
+          name="pain_points"
           onChange={(e) =>
-            setFormData({
-              ...formData,
-              type_of_documents_to_process: e.target.value,
-            })
+            setFormData({ ...formData, pain_points: e.target.value })
           }
         />
 
-        <p>provide_samples</p>
+        <p>pfi_cloud_fax_service</p>
         <select
-          value={formData.provide_samples}
+          value={formData.pfi_cloud_fax_service}
           onChange={(e) =>
-            setFormData({ ...formData, provide_samples: e.target.value })
+            setFormData({ ...formData, pfi_cloud_fax_service: e.target.value })
           }
         >
           {["Select", "True", "False"].map((item, i) => {
@@ -64,42 +61,48 @@ export default function otherdocuments({ data }) {
 
         <input
           type="text"
-          placeholder="pain_points"
-          name="pain_points"
-          onChange={(e) =>
-            setFormData({ ...formData, pain_points: e.target.value })
-          }
-        />
-
-        <input
-          type="text"
-          placeholder="volume_estimations"
-          name="volume_estimations"
-          onChange={(e) =>
-            setFormData({ ...formData, volume_estimations: e.target.value })
-          }
-        />
-
-        <input
-          type="text"
-          placeholder="current_workflow_details"
-          name="current_workflow_details"
+          placeholder="fax_volume_pages"
+          name="fax_volume_pages"
           onChange={(e) =>
             setFormData({
               ...formData,
-              current_workflow_details: e.target.value,
+              fax_volume_pages: e.target.value,
             })
           }
         />
 
         <input
           type="text"
-          placeholder="current_intake_methods"
-          name="current_intake_methods"
+          placeholder="fax_numbers"
+          name="fax_numbers"
           onChange={(e) =>
             setFormData({
               ...formData,
-              current_intake_methods: e.target.value,
+              fax_numbers: e.target.value,
+            })
+          }
+        />
+
+        <input
+          type="text"
+          placeholder="current_fax_setup"
+          name="current_fax_setup"
+          onChange={(e) =>
+            setFormData({
+              ...formData,
+              current_fax_setup: e.target.value,
+            })
+          }
+        />
+
+        <input
+          type="text"
+          placeholder="current_methods_of_faxing"
+          name="current_methods_of_faxing"
+          onChange={(e) =>
+            setFormData({
+              ...formData,
+              current_methods_of_faxing: e.target.value,
             })
           }
         />
@@ -137,33 +140,18 @@ export default function otherdocuments({ data }) {
           placeholder="mfd_vendor"
           name="mfd_vendor"
           onChange={(e) =>
-            setFormData({
-              ...formData,
-              mfd_vendor: e.target.value,
-            })
+            setFormData({ ...formData, mfd_vendor: e.target.value })
           }
         />
 
         <input
           type="text"
-          placeholder="integrations_for_lookup_data"
-          name="integrations_for_lookup_data"
+          placeholder="integrations"
+          name="integrations"
           onChange={(e) =>
             setFormData({
               ...formData,
-              integrations_for_lookup_data: e.target.value,
-            })
-          }
-        />
-
-        <input
-          type="text"
-          placeholder="integrations_for_data_export"
-          name="integrations_for_data_export"
-          onChange={(e) =>
-            setFormData({
-              ...formData,
-              integrations_for_data_export: e.target.value,
+              integrations: e.target.value,
             })
           }
         />
@@ -202,15 +190,37 @@ export default function otherdocuments({ data }) {
 
         <input
           type="text"
-          placeholder="current_ecm_cloud_storage"
-          name="current_ecm_cloud_storage"
+          placeholder="ecm_cloud_storage"
+          name="ecm_cloud_storage"
           onChange={(e) =>
-            setFormData({
-              ...formData,
-              current_ecm_cloud_storage: e.target.value,
-            })
+            setFormData({ ...formData, ecm_cloud_storage: e.target.value })
           }
         />
+
+        <input
+          type="text"
+          placeholder="telco_provider"
+          name="telco_provider"
+          onChange={(e) =>
+            setFormData({ ...formData, telco_provider: e.target.value })
+          }
+        />
+
+        <p>use_coversheet</p>
+        <select
+          value={formData.use_coversheet}
+          onChange={(e) =>
+            setFormData({ ...formData, use_coversheet: e.target.value })
+          }
+        >
+          {["Select", "True", "False"].map((item, i) => {
+            return (
+              <option key={i} value={item}>
+                {item}
+              </option>
+            );
+          })}
+        </select>
 
         <p>any_automation_desired</p>
         <select
@@ -233,21 +243,39 @@ export default function otherdocuments({ data }) {
           placeholder="other_important_detail"
           name="other_important_detail"
           onChange={(e) =>
-            setFormData({
-              ...formData,
-              other_important_detail: e.target.value,
-            })
+            setFormData({ ...formData, other_important_detail: e.target.value })
           }
         />
 
-        <p>generic_demo_required</p>
-        <select
-          value={formData.generic_demo_required}
+        <input
+          type="text"
+          placeholder="how_many_modalities"
+          name="how_many_modalities"
           onChange={(e) =>
-            setFormData({ ...formData, generic_demo_required: e.target.value })
+            setFormData({ ...formData, how_many_modalities: e.target.value })
+          }
+        />
+
+        <input
+          type="text"
+          placeholder="how_many_departments"
+          name="how_many_departments"
+          onChange={(e) =>
+            setFormData({ ...formData, how_many_departments: e.target.value })
+          }
+        />
+
+        <p>centralized_or_decentralized</p>
+        <select
+          value={formData.centralized_or_decentralized}
+          onChange={(e) =>
+            setFormData({
+              ...formData,
+              centralized_or_decentralized: e.target.value,
+            })
           }
         >
-          {["Select", "True", "False"].map((item, i) => {
+          {["Select", "Centralized", "Decentralized"].map((item, i) => {
             return (
               <option key={i} value={item}>
                 {item}
@@ -256,21 +284,14 @@ export default function otherdocuments({ data }) {
           })}
         </select>
 
-        <p>custom_demo_required</p>
-        <select
-          value={formData.custom_demo_required}
+        <input
+          type="text"
+          placeholder="PDI"
+          name="PDI"
           onChange={(e) =>
-            setFormData({ ...formData, custom_demo_required: e.target.value })
+            setFormData({ ...formData, PDI: e.target.value })
           }
-        >
-          {["Select", "True", "False"].map((item, i) => {
-            return (
-              <option key={i} value={item}>
-                {item}
-              </option>
-            );
-          })}
-        </select>
+        />
 
         <button type="submit">Submit</button>
       </form>
@@ -299,7 +320,7 @@ export default function otherdocuments({ data }) {
 }
 
 export async function getServerSideProps() {
-  const tests = await prisma.otherdocuments.findMany();
+  const tests = await prisma.pdi.findMany();
 
   return {
     props: {

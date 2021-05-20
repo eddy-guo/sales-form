@@ -7,7 +7,7 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-export default function otherdocuments({ data }) {
+export default function accountsPayable({ data }) {
   const [formData, setFormData] = useState({});
   const [tests, setTests] = useState(data);
 
@@ -16,7 +16,7 @@ export default function otherdocuments({ data }) {
 
     setTests([...tests, formData]);
 
-    const response = await fetch("/api/otherdocuments", {
+    const response = await fetch("/api/accountspayable", {
       method: "POST",
       body: JSON.stringify(formData),
     });
@@ -31,37 +31,9 @@ export default function otherdocuments({ data }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1 className={styles.title}>Other Documents Form</h1>
+      <h1 className={styles.title}>Accounts Payable Form</h1>
 
       <form className={styles.testform} onSubmit={saveTest}>
-        <input
-          type="text"
-          placeholder="type_of_documents_to_process"
-          name="type_of_documents_to_process"
-          onChange={(e) =>
-            setFormData({
-              ...formData,
-              type_of_documents_to_process: e.target.value,
-            })
-          }
-        />
-
-        <p>provide_samples</p>
-        <select
-          value={formData.provide_samples}
-          onChange={(e) =>
-            setFormData({ ...formData, provide_samples: e.target.value })
-          }
-        >
-          {["Select", "True", "False"].map((item, i) => {
-            return (
-              <option key={i} value={item}>
-                {item}
-              </option>
-            );
-          })}
-        </select>
-
         <input
           type="text"
           placeholder="pain_points"
@@ -73,10 +45,25 @@ export default function otherdocuments({ data }) {
 
         <input
           type="text"
-          placeholder="volume_estimations"
-          name="volume_estimations"
+          placeholder="invoice_volume_estimations"
+          name="invoice_volume_estimations"
           onChange={(e) =>
-            setFormData({ ...formData, volume_estimations: e.target.value })
+            setFormData({
+              ...formData,
+              invoice_volume_estimations: e.target.value,
+            })
+          }
+        />
+
+        <input
+          type="text"
+          placeholder="type_of_invoice_percentage"
+          name="type_of_invoice_percentage"
+          onChange={(e) =>
+            setFormData({
+              ...formData,
+              type_of_invoice_percentage: e.target.value,
+            })
           }
         />
 
@@ -137,10 +124,7 @@ export default function otherdocuments({ data }) {
           placeholder="mfd_vendor"
           name="mfd_vendor"
           onChange={(e) =>
-            setFormData({
-              ...formData,
-              mfd_vendor: e.target.value,
-            })
+            setFormData({ ...formData, mfd_vendor: e.target.value })
           }
         />
 
@@ -202,13 +186,85 @@ export default function otherdocuments({ data }) {
 
         <input
           type="text"
-          placeholder="current_ecm_cloud_storage"
-          name="current_ecm_cloud_storage"
+          placeholder="current_erp_ecm"
+          name="current_erp_ecm"
           onChange={(e) =>
-            setFormData({
-              ...formData,
-              current_ecm_cloud_storage: e.target.value,
-            })
+            setFormData({ ...formData, current_erp_ecm: e.target.value })
+          }
+        />
+
+        <input
+          type="text"
+          placeholder="erp_partner_vendor"
+          name="erp_partner_vendor"
+          onChange={(e) =>
+            setFormData({ ...formData, erp_partner_vendor: e.target.value })
+          }
+        />
+
+        <p>po_matching_required</p>
+        <select
+          value={formData.po_matching_required}
+          onChange={(e) =>
+            setFormData({ ...formData, po_matching_required: e.target.value })
+          }
+        >
+          {["Select", "True", "False"].map((item, i) => {
+            return (
+              <option key={i} value={item}>
+                {item}
+              </option>
+            );
+          })}
+        </select>
+
+        <p>gr_matching_required</p>
+        <select
+          value={formData.gr_matching_required}
+          onChange={(e) =>
+            setFormData({ ...formData, gr_matching_required: e.target.value })
+          }
+        >
+          {["Select", "True", "False"].map((item, i) => {
+            return (
+              <option key={i} value={item}>
+                {item}
+              </option>
+            );
+          })}
+        </select>
+
+        <p>line_items_required</p>
+        <select
+          value={formData.line_items_required}
+          onChange={(e) =>
+            setFormData({ ...formData, line_items_required: e.target.value })
+          }
+        >
+          {["Select", "True", "False"].map((item, i) => {
+            return (
+              <option key={i} value={item}>
+                {item}
+              </option>
+            );
+          })}
+        </select>
+
+        <input
+          type="text"
+          placeholder="how_many_approvers"
+          name="how_many_approvers"
+          onChange={(e) =>
+            setFormData({ ...formData, how_many_approvers: e.target.value })
+          }
+        />
+
+        <input
+          type="text"
+          placeholder="how_many_ap_clerks"
+          name="how_many_ap_clerks"
+          onChange={(e) =>
+            setFormData({ ...formData, how_many_ap_clerks: e.target.value })
           }
         />
 
@@ -233,10 +289,7 @@ export default function otherdocuments({ data }) {
           placeholder="other_important_detail"
           name="other_important_detail"
           onChange={(e) =>
-            setFormData({
-              ...formData,
-              other_important_detail: e.target.value,
-            })
+            setFormData({ ...formData, other_important_detail: e.target.value })
           }
         />
 
@@ -299,7 +352,7 @@ export default function otherdocuments({ data }) {
 }
 
 export async function getServerSideProps() {
-  const tests = await prisma.otherdocuments.findMany();
+  const tests = await prisma.accountspayable.findMany();
 
   return {
     props: {

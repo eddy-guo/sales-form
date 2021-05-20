@@ -10,14 +10,6 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model test {
-  id Int @id @default(autoincrement())
-  title String
-  year Int
-  description String
-  slug String
-}
-
 model fax {
   id Int @id @default(autoincrement())
   pain_points String
@@ -62,7 +54,7 @@ model otherdocuments {
 
 model accountspayable {
   id Int @id @default(autoincrement())
-  paint_points String
+  pain_points String
   invoice_volume_estimations String
   type_of_invoice_percentage String
   current_workflow_details String
@@ -89,7 +81,7 @@ model accountspayable {
 
 model digitalmail {
   id Int @id @default(autoincrement())
-  paint_points String
+  pain_points String
   volume_estimations String
   current_workflow_details String
   current_intake_methods String

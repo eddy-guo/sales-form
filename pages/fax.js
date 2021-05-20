@@ -16,7 +16,7 @@ export default function Fax({ data }) {
 
     setTests([...tests, formData]);
 
-    const response = await fetch("/api/tests", {
+    const response = await fetch("/api/fax", {
       method: "POST",
       body: JSON.stringify(formData),
     });
@@ -31,29 +31,77 @@ export default function Fax({ data }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1 className={styles.title}>Process Fusion Sales Form (v1)</h1>
+      <h1 className={styles.title}>Fax Form</h1>
 
       <form className={styles.testform} onSubmit={saveTest}>
         <input
           type="text"
-          placeholder="Title"
-          name="title"
-          onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-        />
-        <input
-          type="number"
-          placeholder="Year"
-          name="year"
-          onChange={(e) => setFormData({ ...formData, year: e.target.value })}
+          placeholder="pain_points"
+          name="pain_points"
+          onChange={(e) =>
+            setFormData({ ...formData, pain_points: e.target.value })
+          }
         />
 
-        <select
-          value={formData.numberOfUsers}
+        <input
+          type="text"
+          placeholder="fax_volume"
+          name="fax_volume"
           onChange={(e) =>
-            setFormData({ ...formData, numberOfUsers: e.target.value })
+            setFormData({ ...formData, fax_volume: e.target.value })
+          }
+        />
+
+        <input
+          type="text"
+          placeholder="fax_numbers"
+          name="fax_numbers"
+          onChange={(e) =>
+            setFormData({ ...formData, fax_numbers: e.target.value })
+          }
+        />
+
+        <input
+          type="text"
+          placeholder="current_fax_setup"
+          name="current_fax_setup"
+          onChange={(e) =>
+            setFormData({ ...formData, current_fax_setup: e.target.value })
+          }
+        />
+
+        <input
+          type="text"
+          placeholder="current_methods_of_faxing"
+          name="current_methods_of_faxing"
+          onChange={(e) =>
+            setFormData({
+              ...formData,
+              current_methods_of_faxing: e.target.value,
+            })
+          }
+        />
+
+        <input
+          type="text"
+          placeholder="service_level_agreements"
+          name="service_level_agreements"
+          onChange={(e) =>
+            setFormData({
+              ...formData,
+              service_level_agreements: e.target.value,
+            })
+          }
+        />
+
+        <p>number_of_users</p>
+        <select
+          value={formData.number_of_users}
+          onChange={(e) =>
+            setFormData({ ...formData, number_of_users: e.target.value })
           }
         >
-          {["10", "25", "50", ">100"].map((item, i) => {
+          {["Select", "10", "25", "50", ">100"].map((item, i) => {
             return (
               <option key={i} value={item}>
                 {item}
@@ -62,23 +110,116 @@ export default function Fax({ data }) {
           })}
         </select>
 
-        <textarea
-          name="description"
-          id=""
-          cols="30"
-          rows="10"
-          placeholder="Description"
-          onChange={(e) =>
-            setFormData({ ...formData, description: e.target.value })
-          }
-        />
         <input
           type="text"
-          placeholder="Slug"
-          name="slug"
-          onChange={(e) => setFormData({ ...formData, slug: e.target.value })}
+          placeholder="mfd_vendor"
+          name="mfd_vendor"
+          onChange={(e) =>
+            setFormData({ ...formData, mfd_vendor: e.target.value })
+          }
         />
-        <button type="submit">Add test</button>
+
+        <input
+          type="text"
+          placeholder="integrations"
+          name="integrations"
+          onChange={(e) =>
+            setFormData({ ...formData, integrations: e.target.value })
+          }
+        />
+
+        <p>authentication</p>
+        <select
+          value={formData.authentication}
+          onChange={(e) =>
+            setFormData({ ...formData, authentication: e.target.value })
+          }
+        >
+          {["Select", "Basic", "SAML"].map((item, i) => {
+            return (
+              <option key={i} value={item}>
+                {item}
+              </option>
+            );
+          })}
+        </select>
+
+        <p>retention</p>
+        <select
+          value={formData.retention}
+          onChange={(e) =>
+            setFormData({ ...formData, retention: e.target.value })
+          }
+        >
+          {["Select", "Temp", "Long-term"].map((item, i) => {
+            return (
+              <option key={i} value={item}>
+                {item}
+              </option>
+            );
+          })}
+        </select>
+
+        <input
+          type="text"
+          placeholder="ecm_cloud_storage"
+          name="ecm_cloud_storage"
+          onChange={(e) =>
+            setFormData({ ...formData, ecm_cloud_storage: e.target.value })
+          }
+        />
+
+        <input
+          type="text"
+          placeholder="telco_provider"
+          name="telco_provider"
+          onChange={(e) =>
+            setFormData({ ...formData, telco_provider: e.target.value })
+          }
+        />
+
+        <p>use_coversheet</p>
+        <select
+          value={formData.use_coversheet}
+          onChange={(e) =>
+            setFormData({ ...formData, use_coversheet: e.target.value })
+          }
+        >
+          {["Select", "True", "False"].map((item, i) => {
+            return (
+              <option key={i} value={item}>
+                {item}
+              </option>
+            );
+          })}
+        </select>
+
+        <p>any_automation_desired</p>
+        <select
+          value={formData.any_automation_desired}
+          onChange={(e) =>
+            setFormData({ ...formData, any_automation_desired: e.target.value })
+          }
+        >
+          {["Select", "True", "False"].map((item, i) => {
+            return (
+              <option key={i} value={item}>
+                {item}
+              </option>
+            );
+          })}
+        </select>
+
+        <input
+          type="text"
+          placeholder="other_important_detail"
+          name="other_important_detail"
+          onChange={(e) =>
+            setFormData({ ...formData, other_important_detail: e.target.value })
+          }
+        />
+
+        <button type="submit">Submit</button>
       </form>
 
       <main className={styles.main}>
@@ -97,12 +238,15 @@ export default function Fax({ data }) {
           ))}
         </ul>
       </main>
+      <Link href="/">
+        <a>Back to home page</a>
+      </Link>
     </div>
   );
 }
 
 export async function getServerSideProps() {
-  const tests = await prisma.test.findMany();
+  const tests = await prisma.fax.findMany();
 
   return {
     props: {

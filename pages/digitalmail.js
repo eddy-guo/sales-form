@@ -7,7 +7,7 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-export default function otherdocuments({ data }) {
+export default function digitalMail({ data }) {
   const [formData, setFormData] = useState({});
   const [tests, setTests] = useState(data);
 
@@ -16,7 +16,7 @@ export default function otherdocuments({ data }) {
 
     setTests([...tests, formData]);
 
-    const response = await fetch("/api/otherdocuments", {
+    const response = await fetch("/api/digitalmail", {
       method: "POST",
       body: JSON.stringify(formData),
     });
@@ -31,37 +31,9 @@ export default function otherdocuments({ data }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1 className={styles.title}>Other Documents Form</h1>
+      <h1 className={styles.title}>Digital Mail Form</h1>
 
       <form className={styles.testform} onSubmit={saveTest}>
-        <input
-          type="text"
-          placeholder="type_of_documents_to_process"
-          name="type_of_documents_to_process"
-          onChange={(e) =>
-            setFormData({
-              ...formData,
-              type_of_documents_to_process: e.target.value,
-            })
-          }
-        />
-
-        <p>provide_samples</p>
-        <select
-          value={formData.provide_samples}
-          onChange={(e) =>
-            setFormData({ ...formData, provide_samples: e.target.value })
-          }
-        >
-          {["Select", "True", "False"].map((item, i) => {
-            return (
-              <option key={i} value={item}>
-                {item}
-              </option>
-            );
-          })}
-        </select>
-
         <input
           type="text"
           placeholder="pain_points"
@@ -76,7 +48,10 @@ export default function otherdocuments({ data }) {
           placeholder="volume_estimations"
           name="volume_estimations"
           onChange={(e) =>
-            setFormData({ ...formData, volume_estimations: e.target.value })
+            setFormData({
+              ...formData,
+              volume_estimations: e.target.value,
+            })
           }
         />
 
@@ -134,13 +109,10 @@ export default function otherdocuments({ data }) {
 
         <input
           type="text"
-          placeholder="mfd_vendor"
-          name="mfd_vendor"
+          placeholder="mfd_scanner_vendor"
+          name="mfd_scanner_vendor"
           onChange={(e) =>
-            setFormData({
-              ...formData,
-              mfd_vendor: e.target.value,
-            })
+            setFormData({ ...formData, mfd_scanner_vendor: e.target.value })
           }
         />
 
@@ -299,7 +271,7 @@ export default function otherdocuments({ data }) {
 }
 
 export async function getServerSideProps() {
-  const tests = await prisma.otherdocuments.findMany();
+  const tests = await prisma.digitalmail.findMany();
 
   return {
     props: {
