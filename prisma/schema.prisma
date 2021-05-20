@@ -10,7 +10,7 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model Test {
+model test {
   id Int @id @default(autoincrement())
   title String
   year Int
@@ -18,21 +18,116 @@ model Test {
   slug String
 }
 
-model Fax {
+model fax {
   id Int @id @default(autoincrement())
-  Pain_Points String
-  Fax_volume String
-  Fax_numbers String
-  Current_fax_setup String
-  Service_Level_Agreements String
-  Number_of_users String // choice; 10, 25, 50, >100
-  MFD_Vendor String
-  Integrations String
-  Authentication String // choice; Basic, SAML
-  Retention String // choice; Temp, Long-term
-  ECM_Cloud_Storage String
-  Telco_Provider String
-  Use_Coversheet String // boolean
-  Any_automation_desired String // boolean
-  Other_Important_Detail String
+  pain_points String
+  fax_volume String
+  fax_numbers String
+  current_fax_setup String
+  current_methods_of_faxing String
+  service_level_agreements String
+  number_of_users String // choice; 10, 25, 50, >100
+  mfd_vendor String
+  integrations String
+  authentication String // choice; Basic, SAML
+  retention String // choice; Temp, Long-term
+  ecm_cloud_storage String
+  telco_provider String
+  use_coversheet String // boolean
+  any_automation_desired String // boolean
+  other_important_detail String
+}
+
+model otherdocuments {
+  id Int @id @default(autoincrement())
+  type_of_documents_to_process String
+  provide_samples String //boolean
+  pain_points String
+  volume_estimations String
+  current_workflow_details String
+  current_intake_methods String
+  service_level_agreements String
+  number_of_users String // choice; 10, 25, 50, >100
+  mfd_vendor String
+  integrations_for_lookup_data String
+  integrations_for_data_export String
+  authentication String // choice; Basic, SAML
+  retention String // choice; Temp, Long-term
+  current_ecm_cloud_storage String
+  any_automation_desired String // boolean
+  other_important_detail String
+  generic_demo_required String // boolean
+  custom_demo_required String // boolean
+}
+
+model accountspayable {
+  id Int @id @default(autoincrement())
+  paint_points String
+  invoice_volume_estimations String
+  type_of_invoice_percentage String
+  current_workflow_details String
+  current_intake_methods String
+  service_level_agreements String
+  number_of_users String // choice; 10, 25, 50, >100
+  mfd_vendor String
+  integrations_for_lookup_data String
+  integrations_for_data_export String
+  authentication String // choice; Basic, SAML
+  retention String // choice; Temp, Long-term
+  current_erp_ecm String
+  erp_partner_vendor String
+  po_matching_required String // boolean
+  gr_matching_required String // boolean
+  line_items_required String // boolean
+  how_many_approvers String
+  how_many_ap_clerks String
+  any_automation_desired String // boolean
+  other_important_detail String
+  generic_demo_required String // boolean
+  custom_demo_required String // boolean
+}
+
+model digitalmail {
+  id Int @id @default(autoincrement())
+  paint_points String
+  volume_estimations String
+  current_workflow_details String
+  current_intake_methods String
+  service_level_agreements String
+  number_of_users String // choice; 10, 25, 50, >100
+  mfd_scanner_vendor String
+  integrations_for_lookup_data String
+  integrations_for_data_export String
+  authentication String // choice; Basic, SAML
+  retention String // choice; Temp, Long-term
+  current_ecm_cloud_storage String
+  any_automation_desired String // boolean
+  other_important_detail String
+  generic_demo_required String // boolean
+  custom_demo_required String // boolean  
+}
+
+model pdi {
+  id Int @id @default(autoincrement())
+  pain_points String
+  pfi_cloud_fax_service String // boolean
+  fax_volume_pages String
+  fax_numbers String
+  current_fax_setup String
+  current_methods_of_faxing String
+  service_level_agreements String
+  number_of_users String // choice; 10, 25, 50, >100
+  mfd_vendor String
+  integrations String
+  authentication String // choice; Basic, SAML
+  retention String // choice; Temp, Long-term
+  ecm_cloud_storage String
+  telco_provider String
+  use_coversheet String // boolean
+  any_automation_desired String // boolean
+  other_important_detail String
+  how_many_modalities String
+  how_many_departments String
+  centralized_or_decentralized String // choice; Centralized, Decentralized
+  PDI String
 }

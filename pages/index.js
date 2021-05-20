@@ -6,10 +6,10 @@ export default function Home() {
       <Link href="/fax">
         <a>Fax</a>
       </Link>
-      <Link href="/other-documents">
+      <Link href="/otherdocuments">
         <a>Other Documents</a>
       </Link>
-      <Link href="/accounts-payable">
+      <Link href="/accountspayable">
         <a>Accounts Payable</a>
       </Link>
     </div>
