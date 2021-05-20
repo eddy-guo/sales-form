@@ -25,7 +25,7 @@ model Fax {
   Fax_numbers String
   Current_fax_setup String
   Service_Level_Agreements String
-  Number_of_users Int // choice; 10, 25, 50, >100
+  Number_of_users String // choice; 10, 25, 50, >100
   MFD_Vendor String
   Integrations String
   Authentication String // choice; Basic, SAML
