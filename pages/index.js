@@ -6,11 +6,21 @@ export default function Home() {
       <Link href="/fax">
         <a>Fax</a>
       </Link>
+      <br></br>
       <Link href="/otherdocuments">
         <a>Other Documents</a>
       </Link>
+      <br></br>
       <Link href="/accountspayable">
         <a>Accounts Payable</a>
+      </Link>
+      <br></br>
+      <Link href="/digitalmail">
+        <a>Digital Mail</a>
+      </Link>
+      <br></br>
+      <Link href="/pdi">
+        <a>PDI</a>
       </Link>
     </div>
   );
