@@ -31,7 +31,7 @@ export default function pdi({ data }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1 className={styles.title}>Accounts Payable Form</h1>
+      <h1 className={styles.title}>PDI Form</h1>
 
       <form className={styles.testform} onSubmit={saveTest}>
         <input

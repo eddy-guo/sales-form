@@ -96,7 +96,8 @@ model digitalmail {
   any_automation_desired String // boolean
   other_important_detail String
   generic_demo_required String // boolean
-  custom_demo_required String // boolean  
+  custom_demo_required String // boolean 
+ 
 }
 
 model pdi {
